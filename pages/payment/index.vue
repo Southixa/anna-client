@@ -1,6 +1,9 @@
 <template>
     <p class="text-gray-800 font-semibold">#ຈ່າຍຄ່າຫ້ອງ</p>
     <div class="w-full flex flex-col gap-2 mt-4">
+        <div v-if="!loading && paymentDetails.length == 0" class="w-full flex justify-center mt-5">
+            <p class="text-gray-500 text-sm">ບໍ່ມີລາຍການ...</p>
+        </div>
         <div v-if="loading" class="w-full h-[100px] rounded-sm overflow-hidden">
             <n-skeleton height="100%" width="100%" />
         </div>

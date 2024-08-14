@@ -79,7 +79,3 @@
     console.log("Particles container loaded", container);
   };
   </script>
-  
-  <style scoped>
- 
-  </style>

@@ -20,6 +20,9 @@
             </nuxt-link>
         </div>
     </div>
+    <div v-if="!loading && reports.length == 0" class="w-full flex justify-center mt-8">
+        <p class="text-gray-500 text-sm">ບໍ່ມີລາຍການ...</p>
+    </div>
     <div class="w-full flex flex-col gap-2 mt-4">
         <div v-if="loading" class="w-full h-[32px] rounded-md overflow-hidden">
             <n-skeleton height="100%" width="100%" />
