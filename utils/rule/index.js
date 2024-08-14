@@ -1,17 +1,19 @@
 import Staff from "./staff.js";
-import Student from "./student.js";
-import User from "./user.js";
-import Major from "./major.js";
-import Thesis from "./thesis.js";
-import Teacher from "./teacher.js";
+import Room from "./room.js";
+import Customer from "./customer.js";
+import Announment from "./announment.js";
+import Renting from "./renting.js";
+import Payment from "./payment.js";
+import Login from "./login.js";
 
 const Rules = {
+    Room,
+    Customer,
+    Announment,
+    Renting,
     Staff,
-    Student,
-    User,
-    Major,
-    Thesis,
-    Teacher
+    Payment,
+    Login
 }
 
 export default Rules;

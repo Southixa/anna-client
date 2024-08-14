@@ -1,3 +1,5 @@
+import gql from "graphql-tag";
+
 const Staff = {
     insert: gql`
         mutation insertStuff($object: staff_insert_input!) {
@@ -6,34 +8,72 @@ const Staff = {
             }
         }
     `,
-    update: gql`
-        mutation UpdateStaffMutation($id: uuid!, $object: staff_set_input!) {
-            update_staff_by_pk(pk_columns: {staff_id: $id}, _set: $object) {
-                staff_id
+    getOneByGmail: gql`
+        query MyQuery($email: citext = "") {
+            users(where: {email: {_eq: $email}}) {
+                id
+            }
+        }
+    `,
+    getOneByPhoneNumber: gql`
+        query MyQuery($phoneNumber: String = "") {
+            users(where: {phoneNumber: {_eq: $phoneNumber}}) {
+                id
             }
     }
+
+
+    `,
+    update: gql`
+     mutation MyMutation($object: users_set_input = {}, $id: uuid = "") {
+        updateUsers(where: {id: {_eq: $id}}, _set: $object) {
+            returning {
+            id
+            }
+        }
+    }
+
     `,
     delete: gql`
-    mutation deleteStaff ($id: uuid!){
-        delete_staff_by_pk(staff_id: $id) {
-            staff_id
+    mutation MyMutation($id: uuid = "") {
+        deleteUsers(where: {id: {_eq: $id}}) {
+            returning {
+               id
+            }
         }
     }
+
     `,
     getAll: gql`
-      query stuff($offset: Int, $limit: Int) {
-        staff(offset: $offset, limit: $limit) {
-            staff_id
-            staff_firstname
-            staff_lastname
-            staff_email
-            staff_phone
-            staff_password
-            staff_profile
-            staff_role
-            users_id
+     query MyQuery {
+        users {
+            activeMfaType
+            avatarUrl
+            createdAt
+            currentChallenge
+            defaultRole
+            disabled
+            displayName
+            email
+            emailVerified
+            id
+            isAnonymous
+            lastSeen
+            locale
+            newEmail
+            otpHash
+            otpHashExpiresAt
+            otpMethodLastUsed
+            passwordHash
+            phoneNumber
+            phoneNumberVerified
+            ticket
+            ticketExpiresAt
+            totpSecret
+            updatedAt
         }
-    }
+        }
+
     `
     ,
     getOne: gql`
@@ -61,27 +101,34 @@ const Staff = {
         }
     `,
     search: gql`
-        query search ($strText: String!, $phone: bigint!) {
-        staff(where:
-            {
-            _or: [
-                {staff_lastname: {_ilike: $strText}},
-                {staff_firstname: {_ilike: $strText}},
-                {staff_email: {_ilike: $strText}},
-                {staff_phone: {_eq: $phone}},
-            ]
-            }
-        ) {
-            staff_id
-            staff_firstname
-            staff_lastname
-            staff_email
-            staff_password
-            staff_phone
-            staff_profile
-            staff_role
+        query MyQuery($strText: String = "") {
+        users(where: {_or: [{displayName: {_ilike: $strText}}, {currentChallenge: {_ilike: $strText}}, {phoneNumber: {_ilike: $strText}}, {defaultRole: {_ilike: $strText}}]}) {
+            id
+            updatedAt
+            totpSecret
+            ticketExpiresAt
+            ticket
+            phoneNumberVerified
+            phoneNumber
+            passwordHash
+            otpMethodLastUsed
+            otpHashExpiresAt
+            otpHash
+            newEmail
+            locale
+            lastSeen
+            isAnonymous
+            emailVerified
+            email
+            displayName
+            disabled
+            defaultRole
+            currentChallenge
+            createdAt
+            avatarUrl
+            activeMfaType
         }
-    }
+        }
     `
 }
 

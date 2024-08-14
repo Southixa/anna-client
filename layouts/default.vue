@@ -1,120 +1,83 @@
-<template>
-    <div class="w-full bg-gray-200 min-h-screen flex relative">
-      <nav class="h-full w-72 bg-primary p-5 fixed top-0 left-0">
-        <div class="h-full w-full">
-          <div class="w-full h-16 flex items-center">
-            <div class="w-16 h-16">
-              <img src="~/assets/image/logo/logo_white_bg.png" alt="">
+<template class="w-full relative">
+    <div class="w-full bg-[#111111] p-[10px]">
+        <div class="w-full min-h-screen bg-white p-4">
+            <div class="max-w-[924px] mx-auto pt-0 md:pt-8">
+                <div class="w-full flex justify-center flex-col items-center">
+                    <p class="text-[60px] md:text-[100px] font-medium " style="font-family: 'Grey Qo'">Anna</p>
+                    <p class=" text-[16px] text-gray-500" style="font-family: 'Dancing Script'" >anna management system</p>
+                </div>
+                <div class="w-full mt-8">
+                    <div class="w-full h-[1px] border bg-[#111111]/60"></div>
+                    <div class="w-full hidden justify-center md:flex">
+                        <div class="flex justify-center gap-2 py-[8px]">
+                            <!-- <nuxt-link to="/">
+                                <button class="hover:bg-gray-100 transition-all duration-200 min-w-[80px] px-[10px] py-[4px] rounded-md">ໜ້າຫຼັກ</button>
+                            </nuxt-link> -->
+                            <nuxt-link to="/announcement">
+                                <button class="hover:bg-gray-100 transition-all duration-200 min-w-[80px] px-[10px] py-[4px] rounded-md">ແຈ້ງການ</button>
+                            </nuxt-link>
+                            <nuxt-link to="/report">
+                                <button class="hover:bg-gray-100 transition-all duration-200 min-w-[80px] px-[10px] py-[4px] rounded-md">ລາຍງານ</button>
+                            </nuxt-link>
+                            <nuxt-link to="/payment">
+                                <button class="hover:bg-gray-100 transition-all duration-200 min-w-[80px] px-[10px] py-[4px] rounded-md">ຈ່າຍຄ່າຫ້ອງ</button>
+                            </nuxt-link>
+                            <nuxt-link to="/profile">
+                                <button class="hover:bg-gray-100 transition-all duration-200 min-w-[80px] px-[10px] py-[4px] rounded-md">ໂປຟາຍ</button>
+                            </nuxt-link>
+                        </div>
+                    </div>
+                    <div class="w-full hidden md:block h-[1px] border bg-[#111111]/60"></div>
+                </div>
+                <div class="w-full mt-8">
+                    <slot />
+                </div>
             </div>
-            <div class="p-4 grow">
-              <p class="text-white text-xl font-bold">Sangsavanh</p>
-            </div>
-          </div>
-          <div class="w-full h-[300px] mt-16">
-
-            <NavManu v-for="item in navMenuList" :key="item.name" :name="item.name" :icon="item.icon" :size="item.size" :path="item.path" :active="getRouteName() == item.path"/>
-
-          </div>
         </div>
-      </nav>
-      <div class="h-full min-w-72">
-      </div>
-      <div class="grow bg-gray-100">
-        <div class="w-full bg-white shadow-sm flex items-center justify-between px-4 py-2">
-          <div class="w-8 h-8 flex justify-center items-center">
-            <Icon name="fa:navicon" size="24" class="text-gray-500"></Icon>
-          </div>
-          <div class="  flex gap-3 items-center">
-            <p class="font-normal text-gray-800">Admin</p>
-            <div class="w-12 h-12 rounded-full">
-              <img src="~/assets/image/avatar/avatar1.png" alt="" class="w-full h-full object-cover">
-            </div>
-          </div>
+        <div class="w-full bg-[#333333] min-h-[200px] flex justify-center items-center flex-col">
+            <p class="text-[100px] font-medium  text-white" style="font-family: 'Grey Qo'">Anna</p>
+                    <p class=" text-[16px] text-white" style="font-family: 'Dancing Script'" >anna management system</p>
         </div>
-        <div class="px-6">
-          <div class="max-w-screen-2xl mx-auto my-4">
-            <h2 class="font-bold text-xl text-gray-900">{{ getPageTitle() }}</h2>
-            <p class="font-light text-normal text-gray-600 mt-1">{{ getPageName() }}</p>
-          </div>
-          <div>
-            <slot />  
-          </div>
-        </div>
-        
-      </div>
     </div>
-  </template>
+    <div class="w-full sticky bottom-0 bg-white button-0 left-0 pb-[10px] pt-[14px] px-[10px] md:hidden shadow-2xl border-t">
+        <div class="w-full grid grid-cols-12">
+            <nuxt-link to="/announcement" class="col-span-3 flex justify-center">
+                <div class="flex flex-col items-center">
+                    <div class="w-[20px] h-[20px] flex justify-center items-center">
+                        <Icon name="material-symbols:breaking-news-rounded" class="text-gray-400" size="16" />
+                    </div>
+                    <p class="text-[12px] text-center text-gray-500">ແຈ້ງການ</p>
+                </div>
+            </nuxt-link>
+            <nuxt-link to="/report" class="col-span-3 flex justify-center">
+                <div class="flex flex-col items-center">
+                    <div class="w-[20px] h-[20px] flex justify-center items-center">
+                        <Icon name="ic:sharp-report" class="text-gray-400" size="18" />
+                    </div>
+                    <p class="text-[12px] text-center text-gray-500">ລາຍງານ</p>
+                </div>
+            </nuxt-link>
+            <nuxt-link to="/payment" class="col-span-3 flex justify-center">
+                <div class="flex flex-col items-center">
+                    <div class="w-[20px] h-[20px] flex justify-center items-center">
+                        <Icon name="fluent:payment-20-filled" class="text-gray-400" size="20" />
+                    </div>
+                    <p class="text-[12px] text-center text-gray-500">ຈ່າຍຄ່າຫ້ອງ</p>
+                </div>
+            </nuxt-link>
+            <nuxt-link to="/profile" class="col-span-3 flex justify-center">
+                <div class="flex flex-col items-center">
+                    <div class="w-[20px] h-[20px] flex justify-center items-center">
+                        <Icon name="material-symbols:person" class="text-gray-400" size="20" />
+                    </div>
+                    <p class="text-[12px] text-center text-gray-500">ໂປຟາຍ</p>
+                </div>
+            </nuxt-link>
+        </div>
+    </div>
+</template>
 
 <script setup>
-const navMenuList = [
-  {
-    name: 'ລາຍງານ',
-    icon: 'entypo:bar-graph',
-    size: '24',
-    path: '/dashboard',
-    pageTitle: 'ລາຍງານສະພາບລວມ'
-  },
-  {
-    name: 'ຂໍ້ມູນຜູ້ໃຊ້',
-    icon: 'bi:people-fill',
-    size: '24',
-    path: '/user',
-    pageTitle: 'ຈັດການຂໍ້ມູນຜູ້ໃຊ້ເວັບໄຊ'
-  },
-  {
-    name: 'ຂໍ້ມູນນັກສຶກສາ',
-    icon: 'ph:student-fill',
-    size: '24',
-    path: '/student',
-    pageTitle: 'ຈັດການຂໍ້ມູນນັກສຶກສາ'
-  },
-  {
-    name: 'ຂໍ້ມູນສາຂາຮຽນ',
-    icon: 'vaadin:connect',
-    size: '22',
-    path: '/major',
-    pageTitle: 'ຈັດການຂໍ້ມູນສາຂາຮຽນ'
-  },
-  {
-    name: 'ຂໍ້ມູນບົດຈົບ',
-    icon: 'ri:book-fill',
-    size: '24',
-    path: '/thesis',
-    pageTitle: 'ຈັດການບົດຈົບທັງໝົດ'
-  },
-  {
-    name: 'ຂໍ້ມູນຜູ້ໃຊ້ງານລະບົບ',
-    icon: 'clarity:administrator-solid',
-    size: '24',
-    path: '/staff',
-    pageTitle: 'ຈັດການຂໍ້ມູນຜູ້ໃຊ້ງານລະບົບ'
-  },
-  {
-    name: 'ອອກຈາກລະບົບ',
-    icon: 'lucide:log-out',
-    size: '24',
-    path: '/login',
-    pageTitle: 'ເຂົ້າສູ່ລະບົບ'
-  }
-]
-
-function getRouteName() {
-  const fullRoute = useRoute().path;
-  const routeName = fullRoute.split('/')[1];
-  if(routeName == "") return navMenuList[0].path;
-  return "/" + routeName;
-}
-
-function getPageTitle() {
-  const routeName = getRouteName();
-  const pageTitle = navMenuList.find(x => x.path == routeName).pageTitle;
-  return pageTitle;
-}
-
-function getPageName() {
-  const routeName = getRouteName();
-  const pageName = navMenuList.find(x => x.path == routeName).name;
-  return pageName;
-}
 
 </script>
+

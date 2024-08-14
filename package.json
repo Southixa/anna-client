@@ -10,10 +10,16 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nhost/vue": "^2.5.1",
+    "@mdi/font": "^7.4.47",
+    "@nhost/vue": "^2.6.2",
+    "@tsparticles/slim": "^3.5.0",
+    "@tsparticles/vue3": "^3.0.1",
     "@vue/apollo-composable": "^4.0.2",
+    "crypto-js": "^4.2.0",
     "echarts": "^5.5.0",
+    "graphql-tag": "^2.12.6",
     "nuxt": "^3.10.3",
+    "tsparticles": "^3.5.0",
     "vue": "^3.4.19",
     "vue-echarts": "^6.7.1",
     "vue-router": "^4.3.0"
@@ -31,6 +37,8 @@
     "@vicons/ionicons5": "^0.12.0",
     "@vicons/material": "^0.12.0",
     "@vicons/tabler": "^0.12.0",
-    "nuxt-icon": "^0.6.10"
+    "nuxt-icon": "^0.6.10",
+    "vite-plugin-vuetify": "^2.0.3",
+    "vuetify": "^3.6.10"
   }
 }

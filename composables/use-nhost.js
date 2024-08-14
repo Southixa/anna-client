@@ -1,13 +1,21 @@
-import { useNhostClient } from '@nhost/vue'; 
+import { NhostClient } from "@nhost/vue";
+import { useCookie, useRuntimeConfig } from "nuxt/app";
+
 
 export const useNhost = () => {
     const cookie = useCookie('token')
-    const { nhost } = useNhostClient();
+    const runtimeConfig = useRuntimeConfig();
 
-    if(nhost?.auth?.getSession() == null) {
-      nhost.graphql.setAccessToken(cookie.value)
+    const nhostState = useState('nhost', () => {
+      return new NhostClient({
+        subdomain: runtimeConfig.public.NHOST_SUBDOMAIN,
+        region: runtimeConfig.public.NHOST_REGION,
+      })
+    })
+
+    if(nhostState.value?.auth?.getSession() == null) {
+        nhostState.value.graphql.setAccessToken(cookie.value)
     }
-    
-    return { nhost }
-}
-
+  
+    return { nhost: nhostState.value }
+  }
